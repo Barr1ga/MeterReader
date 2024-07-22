@@ -35,6 +35,7 @@ public class MeterService : MeterServiceBase
 
             if (await _repository.SaveAllAsync())
             {
+                _logger.LogInformation("Meter successfully added");
                 return new MeterResponse()
                 {
                     Success = MeterStatus.Success,
@@ -43,6 +44,7 @@ public class MeterService : MeterServiceBase
             }
         }
 
+        _logger.LogInformation("There was an error adding the meter");
         return new MeterResponse()
         {
             Success = MeterStatus.Fail,

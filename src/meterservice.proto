@@ -23,7 +23,7 @@ message MeterRequest {
 }
 
 message MeterResponse {
-	MeterStatus Success = 1;	
+	MeterStatus Status = 1;	
 	string Message = 2;
 }
 
