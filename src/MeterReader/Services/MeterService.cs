@@ -23,15 +23,14 @@ public class MeterService : MeterServiceBase
         {
             foreach (var meter in request.Data)
             {
-                var meterResponse = new MeterRequest()
+                var newMeter = new MeterReading()
                 {
                     CustomerId = meter.CustomerId,
-                    Notes = meter.Notes,
-                    ResCreatedAt = meter.ResCreatedAt,
-                    ResponseValue = meter.ResponseValue,
+                    Value = meter.Value,
+                    ReadingDate = meter.ReadingDate.ToDateTime(),
                 };
 
-                _repository.AddEntity(meterResponse);
+                _repository.AddEntity(newMeter);
             }
 
             if (await _repository.SaveAllAsync())
